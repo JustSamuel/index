@@ -1,0 +1,43 @@
+name: Build and Deploy via FTP
+
+on:
+  push:
+    branches:
+      - trunk
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3
+        with:
+          persist-credentials: false
+
+      - name: Set Node.js
+        uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903
+        with:
+          node-version: "22.x"
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88
+        with:
+          cmd: install
+
+      - name: Build the project
+        uses: borales/actions-yarn@3766bb1335b98fb13c60eaf358fe20811b730a88
+        with:
+          cmd: build
+
+      - name: Deploy to FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: /domains/oosterholt.com/public_html/index/
+
