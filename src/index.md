@@ -21,7 +21,7 @@ Everything is generated from plain Markdown and kept as straightforward as
 possible.
 
 The entire project is available on GitHub
-[here](https://github.com/JustSamuel/indexq), including the notes and the small
+[here](https://github.com/JustSamuel/index), including the notes and the small
 setup that builds the site. Anyone is welcome to explore it or learn from it.
 
 ## Entries {.items}
