@@ -1,4 +1,16 @@
+const markdownIt = require("markdown-it");
+const markdownItAttrs = require("markdown-it-attrs");
+
 module.exports = function(eleventyConfig) {
+  const markdownItOptions = {
+    html: true,
+    breaks: false,
+    linkify: true
+  }
+  
+  const markdownLib = markdownIt(markdownItOptions).use(markdownItAttrs)
+  eleventyConfig.setLibrary('md', markdownLib)
+
   // date formatter filter
   eleventyConfig.addFilter("formatDate", function(date, format = "yyyy-MM-dd") {
     if (!date) return "";
