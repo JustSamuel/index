@@ -1154,6 +1154,7 @@ __metadata:
     markdown-it: "npm:^14.1.0"
     markdown-it-attrs: "npm:^4.3.1"
     markdown-it-container: "npm:^4.0.0"
+    markdown-it-footnote: "npm:^4.0.0"
   languageName: unknown
   linkType: soft
 
@@ -1463,6 +1464,13 @@ __metadata:
   version: 4.0.0
   resolution: "markdown-it-container@npm:4.0.0"
   checksum: 10c0/768390a6e2c182996b4d0be8dd1a7279d266ca2f29936dd8265ef0954a97606bc3514802cc3576db59e119e241e61924a4a1e601a91480be1c12bef5e28797ae
+  languageName: node
+  linkType: hard
+
+"markdown-it-footnote@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "markdown-it-footnote@npm:4.0.0"
+  checksum: 10c0/47aa807b143af211d7eca376c724b05e939e8b5960f6e287c63eca7f121be7ac697ff5601d5b7c89cbde7a32713a66b2a6f375251fad1fe989bd05d07f80e4cd
   languageName: node
   linkType: hard
 

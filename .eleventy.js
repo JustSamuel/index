@@ -1,5 +1,6 @@
 const markdownIt = require("markdown-it");
 const markdownItAttrs = require("markdown-it-attrs");
+const markdownItFootnote = require("markdown-it-footnote");
 
 module.exports = function(eleventyConfig) {
   const markdownItOptions = {
@@ -8,8 +9,18 @@ module.exports = function(eleventyConfig) {
     linkify: true
   }
   
-  const markdownLib = markdownIt(markdownItOptions).use(markdownItAttrs)
+  const markdownLib = markdownIt(markdownItOptions)
+    .use(markdownItAttrs)
+    .use(markdownItFootnote)
   eleventyConfig.setLibrary('md', markdownLib)
+
+  // Remove default hr
+  function render_footnote_block_open (tokens, idx, options) {
+    return '<section class="footnotes">\n' +
+           '<ol class="footnotes-list">\n'
+  }
+
+  markdownLib.renderer.rules.footnote_block_open = render_footnote_block_open;
 
   // date formatter filter
   eleventyConfig.addFilter("formatDate", function(date, format = "yyyy-MM-dd") {
