@@ -1,0 +1,47 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: ./note \"Title\""
+    exit 1
+fi
+
+NOTES_DIR="src/notes"
+NOTE_TITLE="$1"
+
+# Convert to lowercase kebab-case
+NOTE_SLUG=$(echo "$NOTE_TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-\|-$//g')
+
+# Find the highest number in existing note files
+LAST_NUM=$(ls -1 "$NOTES_DIR"/*.md 2>/dev/null | sed 's/.*\/\([0-9]*\)-.*/\1/' | sort -n | tail -1)
+
+# Increment the number
+if [ -z "$LAST_NUM" ]; then
+    NEXT_NUM=1
+else
+    NEXT_NUM=$((LAST_NUM + 1))
+fi
+
+# Format number with leading zeros (3 digits)
+NEXT_NUM_FORMATTED=$(printf "%03d" "$NEXT_NUM")
+
+# Get current date in YYYY-MM-DD format
+CURRENT_DATE=$(date +%Y-%m-%d)
+
+# Create filename
+FILENAME="$NOTES_DIR/$NEXT_NUM_FORMATTED-$NOTE_SLUG.md"
+
+# Create file with frontmatter
+cat > "$FILENAME" <<EOF
+---
+title: $NOTE_TITLE
+layout: note.njk
+tags: 
+  - notes
+date: $CURRENT_DATE
+tooltip: 
+---
+
+EOF
+
+echo "Created: $FILENAME"
+
