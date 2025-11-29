@@ -37,7 +37,7 @@ body{
   min-width:300px;
   overflow:auto;
   padding-right:12px;
-  border-right:1px solid #2A2F3B;
+  margin-right:40px;
 }
 
 .sidebar ul {
@@ -48,6 +48,18 @@ body{
 
 .sidebar li {
   margin-bottom:1.2em;
+}
+
+.sidebar li a {
+  display:block; 
+  text-decoration:none;
+  color:inherit; 
+  border-radius:4px; 
+  transition: background 0.2s;
+}
+
+.sidebar li a:hover {
+  background-color: rgba(255, 255, 255, 0.05); 
 }
 
 .sidebar-tooltip {
@@ -62,9 +74,9 @@ body{
   text-align: justify;
 }
 
-h1{font-size:1.75rem;margin:0 0 1rem;color:#FFFFFF}
+h1{font-size:1.75rem;mcolor:#FFFFFF}
 h2{font-size:1.1rem;margin:1.5rem 0 0.75rem;color:#DDDDDD}
-a{color:#4EA1FF;text-decoration:underline}
+a:not(.sidebar li a){color:#4EA1FF;text-decoration:underline}
 
 .back{font-size:.85rem;margin:0 0 1rem;display:block}
 .back a{color:#AAAAAA;text-decoration:none}
@@ -118,16 +130,19 @@ hr {border:none;border-top:1px solid #2A2F3B;margin:1em 0}
       <hr>
       <ul class="note-list">
         <li>
-          <a href="/">Index</a>
+          <a href="/">
+            <div><b>About Index</b></div>
+          </a>
+          <hr>
         </li>
         {% for note in collections.notes | sortByTitle %}
           <li>
-            <a href="{{ note.url }}"{% if note.data.tooltip %} title="{{ note.data.tooltip }}"{% endif %}>
-              {{ note.data.title }}
+            <a href="{{ note.url }}">
+              <div><b>{{ note.data.title }}</b></div>
+              {% if note.data.summary %}
+                <div class="sidebar-tooltip">{{ note.data.summary }}</div>
+              {% endif %}
             </a>
-            {% if note.data.summary %}
-              <div class="sidebar-tooltip">{{ note.data.summary }}</div>
-            {% endif %}
           </li>
           <hr>
         {% endfor %}

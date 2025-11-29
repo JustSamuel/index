@@ -3,7 +3,6 @@
 {% block content %}
   <header>
     <h1>{{ title }}</h1>
-    <hr>
     {% if date or tags %}
       <div class="meta">
         {% if date %}<span>Added {{ date | formatDate("yyyy-MM-dd") }},</span>{% endif %}
