@@ -5,7 +5,8 @@ tags:
   - notes
   - etymology
 date: 2025-11-28
-tooltip: 
+tooltip: Doing something again in the same way.
+summary: Idiom for repeating a task in the same way, often used humorously or metaphorically.
 ---
 
 To _rinse and repeat_ (or more commonly _wash, rinse, repeat_) is an idiom about
