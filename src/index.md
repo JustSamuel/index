@@ -1,5 +1,5 @@
 ---
-title: Index
+title: About Index
 layout: index.njk
 ---
 
