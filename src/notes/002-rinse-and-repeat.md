@@ -1,7 +1,7 @@
 ---
 title: Rinse and repeat
 layout: note.njk
-tags: 
+tags:
   - notes
   - etymology
 date: 2025-11-28

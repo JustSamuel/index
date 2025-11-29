@@ -1,47 +1,23 @@
-<!doctype html>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{{ title | default("My Huh") }}</title>
-<style>
-:root{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial}
-body{margin:20px;line-height:1.4;color:#0a0a0a; text-align: justify}
-main{max-width:80ch;margin:0 auto}
-h1{font-size:1.75rem;margin:0 0 .5rem}
-h2{font-size:1.1rem;margin:1.5rem 0 .75rem}
-a{color:#0066cc;text-decoration:underline}
-.back{font-size:.85rem;margin:0 0 1rem;display:block}
-.back a{color:#666;text-decoration:none}
-.back a:hover{text-decoration:underline}
-.meta{font-size:.85rem;color:#666;margin:0 0 1.5rem;line-height:1.6}
-.meta span{margin-right:.75em}
-.meta span:not(:last-child)::after{content:"·";margin-left:.75em;color:#999}
-code{background:#f5f5f5;padding:.15em .4em;border-radius:3px;font-size:.9em;font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace}
-pre{background:#f5f5f5;padding:1em;border-radius:4px;overflow-x:auto;margin:1.5rem 0}
-pre code{background:none;padding:0;font-size:.9em}
-.footnote-ref a{text-decoration:none;color:#0066cc;font-weight:normal}
-.footnote-ref a:hover{text-decoration:underline}
-.footnotes{margin-top:3rem;padding-top:1.5rem;border-top:1px solid #e0e0e0}
-.footnotes ol{margin:.5rem 0;padding-left:1.5rem}
-.footnotes li{margin:.5rem 0;line-height:1.6}
-.footnotes .footnote-backref{font-size:.85em;text-decoration:none;margin-left:.3em}
-</style>
-<main>
-  <div class="back"><a href="/">← back</a></div>
+{% extends "base.njk" %}
+
+{% block content %}
   <header>
     <h1>{{ title }}</h1>
+    <hr>
     {% if date or tags %}
-    <div class="meta">
-      {% if date %}<span>{{ date | formatDate("yyyy-MM-dd") }}</span>{% endif %}
-      {% if tags %}
-        {% set tagList = tags %}
-        {% if tagList is string %}{% set tagList = [tags] %}{% endif %}
-        {% for tag in tagList %}
-          <span>{{ tag }}</span>
-        {% endfor %}
-      {% endif %}
-    </div>
+      <div class="meta">
+        {% if date %}<span>Added {{ date | formatDate("yyyy-MM-dd") }},</span>{% endif %}
+        {% if tags %}
+          {% set tagList = tags %}
+          {% if tagList is string %}{% set tagList = [tags] %}{% endif %}
+          {% set tagList = tagList | reject("equalto", "notes") %}
+          tags: 
+          {% for tag in tagList %}
+            <span>{{ tag }}</span>
+          {% endfor %}
+        {% endif %}
+      </div>
     {% endif %}
   </header>
   {{ content | safe }}
-</main>
-
+{% endblock %}
