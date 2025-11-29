@@ -15,9 +15,8 @@ project and the simple look of the site. The topics range from software
 engineering and theoretical computer science to etymology, an interest I mostly
 shared with friends until now. The site stays intentionally light. I try to
 ensure that each page remains under
-[14kb](https://endtimes.dev/why-your-website-should-be-under-14kb-in-size/) and
-follows the principle of [no frameworks or bloat](https://motherfuckingwebsite.com/).
-Everything is generated from plain Markdown and kept as straightforward as
+[14kb](https://endtimes.dev/why-your-website-should-be-under-14kb-in-size/) and has no [bloat](https://motherfuckingwebsite.com/).
+Everything is generated from Markdown and kept as straightforward as
 possible.
 
 The entire project is available on GitHub
