@@ -41,6 +41,26 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  eleventyConfig.addFilter("sortByDate", function (collection) {
+    return (collection || []).slice().sort(function (a, b) {
+      // prefer frontmatter date; fallback to 0
+      const da = a.date ? new Date(a.date).getTime() : 0;
+      const db = b.date ? new Date(b.date).getTime() : 0;
+      return da - db;
+    });
+  });
+
+
+  eleventyConfig.addPassthroughCopy("src/static");
+
+
+  eleventyConfig.addShortcode("infobox", function (image, caption) {
+    return `<div class="infobox">
+    <img src="${image}" alt="${caption}">
+    <small>${caption}</small>
+  </div>`;
+  });
+
   return {
     dir: {
       input: "src",

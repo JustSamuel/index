@@ -172,6 +172,23 @@ hr {border:none;border-top:1px solid #2A2F3B;margin:1em 0}
     transform:translateX(0);
   }
 }
+
+.infobox {
+  float: right;
+  padding: 0.5rem;
+  margin: 0 0 1rem 1rem;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.infobox img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
 </style>
 
 <!-- Full-width topbar only shows on mobile -->
@@ -195,7 +212,7 @@ hr {border:none;border-top:1px solid #2A2F3B;margin:1em 0}
           </a>
           <hr>
         </li>
-        {% for note in collections.notes | sortByTitle %}
+        {% for note in collections.notes | sortByDate | reverse %}
           <li>
             <a href="{{ note.url }}">
               <div><b>{{ note.data.title }}</b></div>
