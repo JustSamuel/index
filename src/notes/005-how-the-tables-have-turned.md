@@ -10,7 +10,7 @@ tooltip: Reversal of roles or fortunes.
 summary: Idiom for a sudden shift in advantage.
 ---
 
-_"How the tables have turned"_ is an idiom used when the roles or fortunes between two sides reverse. It likely originated in the mid-1600s, when _the table_ referred to a backgammon board[^1]. Turning the board meant swapping sides with your opponent, so the losing player would suddenly become the one in a better position[^2].
+_"How the tables have turned"_ is an idiom used when the roles or fortunes between two sides reverse. It likely originated in the mid-1600s, when _the table_ referred to a backgammon board and _tables_ was used to refer to the game itself[^1]. Turning the board meant swapping sides with your opponent, so the losing player would suddenly become the one in a better position[^2].
 
 ## Why I looked it up
 
