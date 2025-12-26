@@ -18,7 +18,7 @@ LAST_NUM=$(ls -1 "$NOTES_DIR"/*.md 2>/dev/null | sed 's/.*\/\([0-9]*\)-.*/\1/' |
 if [ -z "$LAST_NUM" ]; then
 	NEXT_NUM=1
 else
-	NEXT_NUM=$((LAST_NUM + 1))
+	NEXT_NUM=$((10#$LAST_NUM + 1))
 fi
 
 # Format number with leading zeros (3 digits)
